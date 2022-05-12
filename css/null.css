@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Sacramento&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Monoton');
 
+@font-face {
+   font-family: 'm29';
+   src: url('../fonts/m29.TTF');
+}
+
 * {
    padding: 0px;
    margin: 0px;
@@ -26,7 +31,7 @@ a:active {
 }
 
 body {
-   font-family: 'Poppins', 'Arial', sans-serif;
+   font-family: 'm29', 'Poppins', 'Arial', sans-serif;
    font-size: 18px;
 }
 
@@ -51,6 +56,7 @@ input::-ms-clear {
 button {
    cursor: pointer;
    background-color: inherit;
+   font-family: inherit;
 }
 
 button::-moz-focus-inner {
