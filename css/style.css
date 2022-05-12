@@ -9,6 +9,7 @@
    background: #e4dada url('../images/welcome_bg.jpg') no-repeat;
    background-size: cover;
    color: #fff;
+   cursor: default;
 
    /* display: none; */
 }
