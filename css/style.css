@@ -1,8 +1,104 @@
+/*
+* ===============================================
+* ============= Первый экран =================
+* ===============================================
+*/
+.welcome-screen {
+   height: 100vh;
+   width: 100%;
+   background: #e4dada url('../images/welcome_bg.jpg') no-repeat;
+   background-size: cover;
+   color: #fff;
+
+   /* display: none; */
+}
+
+.welcome-screen__title {
+   font-size: 100px;
+   font-weight: 700;
+   margin-bottom: 40px;
+}
+
+.stroke-text {
+   -webkit-text-fill-color: transparent;
+   -webkit-text-stroke: 3px #FC0;
+   text-shadow: #0008 0 0 10px;
+}
+
+.welcome-screen__body {
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+}
+
+.welcome-screen__info {}
+
+.welcome-info {
+   padding: 30px 40px;
+   border-radius: 10px;
+   border: 3px solid #FC0;
+   background: rgba(17, 17, 16, 0.8);
+}
+
+.welcome-info__title {
+   font-size: 30px;
+   margin-bottom: 30px;
+}
+
+.welcome-info__list {
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   margin-bottom: 50px;
+}
+
+.welcome-info__item {
+   padding: 15px;
+   max-width: fit-content;
+   cursor: pointer;
+   border-radius: 4px;
+   transition: all 0.3s ease 0s;
+}
+
+@media (any-hover: hover) {
+   .welcome-info__item:hover {
+      background: #FC0;
+   }
+}
+
+.active-level {
+   background: #60b48a;
+}
+
+.welcome-info button {
+   display: block;
+   margin: 0 auto;
+   background: #60b48a;
+   padding: 10px 30px;
+   border-radius: 4px;
+   color: #fff;
+   transition: all 0.3s ease 0s;
+}
+
+@media (any-hover: hover) {
+   .welcome-info button:hover {
+      background: #4a8d6c;
+   }
+}
+
+
+/*
+* ===============================================
+* ============= Основной экран игры =================
+* ===============================================
+*/
 .main {
    height: 100vh;
    width: 100%;
-   /* background: rgb(109, 106, 106); */
    position: relative;
+   display: none;
 }
 
 .main::before {
@@ -12,7 +108,7 @@
    position: absolute;
    top: 0;
    left: 0;
-   background: rgb(228, 218, 218) url('../images/footer_bg.png') no-repeat;
+   background: #e4dada url('../images/footer_bg.png') no-repeat;
    background-size: cover;
    z-index: -1;
 }
