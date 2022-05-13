@@ -255,7 +255,7 @@
    height: 65px;
    background: url(../img/bird/bird-1.png) no-repeat;
    top: 400px;
-   z-index: -1;
+   /* z-index: -1; */
 }
 
 .right {
