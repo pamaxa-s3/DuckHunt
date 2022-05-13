@@ -29,10 +29,11 @@
 
    <!-- Основной экран игры -->
    <main class="main">
-      <section class="field">
+      <section class="field" id="gamePole">
 
          <div class="field-content">
-
+            <div id="dog"></div>
+            <div class="bird"></div>
          </div>
 
          <footer class="field-footer footer">
@@ -47,13 +48,13 @@
                   <div class="lifes__count">
                      <!-- Временно, для отображения. Далее создание через JS -->
                      <span>
-                        <img class="bullet-life" src="./images/bullet.svg" alt="">
+                        <img class="bullet-life" src="./img/bullet.svg" alt="">
                      </span>
                      <span>
-                        <img class="bullet-life" src="./images/bullet.svg" alt="">
+                        <img class="bullet-life" src="./img/bullet.svg" alt="">
                      </span>
                      <span>
-                        <img class="bullet-life" src="./images/bullet.svg" alt="">
+                        <img class="bullet-life" src="./img/bullet.svg" alt="">
                      </span>
                   </div>
                </div>
@@ -199,7 +200,7 @@
       </section>
    </main>
 
-   <script src="js/main.js"></script>
+   <script src="js/script.js"></script>
 </body>
 
 </html>
