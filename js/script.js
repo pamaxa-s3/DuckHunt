@@ -3,7 +3,6 @@ var gamePole = document.querySelector('#gamePole');
 var dog = document.querySelector('#dog');
 // Выбераем птицу по селектору
 var bird = document.querySelector(".bird");
-console.log(bird);
 // В переменной дистанция храниться значение 50
 var distance = 50;
 // Функция анимации собаки
@@ -70,7 +69,7 @@ function dogAnimation() {
 }
 
 // Выполняем функию анимации собаки
-dogAnimation();
+// dogAnimation();
 
 // Рандомное повление птицы снизу в верх
 function randomAppearanceBelow(min, max) {
@@ -82,7 +81,7 @@ function randomAppearanceBelow(min, max) {
 	return rand;
 }
 
-// Рандомное повление птицы
+// Рандомное появление птицы
 function birdRandom() {
 	// Рандомное появление птицы от 50 да 1150 пикселя в ширену
 	var random = randomAppearanceBelow(50, 1150);
@@ -91,6 +90,9 @@ function birdRandom() {
 
 	// Птица появлеться на высоте в 400 пикселей
 	var dx = 400;
+
+	// Коэфициент скорости птицы, зависит от уровня сложности
+	// let kV = 20;
 	// Птица взлетает вверх
 	var birdTop = setInterval(function () {
 		// От значениея dx отнимаеться по 1 пикселю каждые 10 милисикунд
@@ -98,12 +100,12 @@ function birdRandom() {
 		// Топ равен значению переменной dx
 		bird.style.top = dx + "px";
 		// Если птица достигла высоты в 100 пикселей тогда удалем птицу
-		if (dx == 100) {
+		if (dx == 10) {
 			// Удаляем птицу
 			bird.remove();
 		}
 		// Интервал в 10 милисикунд
-	}, 10);
+	}, kV);
 
 	// В переменной clickСount храниться поумолчанию значение 0, подсчет кликов
 	var clickСount = 0;
@@ -273,4 +275,4 @@ function birdRandom() {
 
 }
 // Активируем функию рандома
-birdRandom();
+// birdRandom();
