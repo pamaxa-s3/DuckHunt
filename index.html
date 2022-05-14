@@ -12,23 +12,23 @@
 
 <body>
 
-   <section class="welcome-screen">
+   <section class="welcome-screen" id="first-screen">
       <div class="welcome-screen__body">
          <h1 class="welcome-screen__title stroke-text">Duck Hunt</h1>
          <div class="welcome-screen__info welcome-info">
             <h2 class="welcome-info__title">choose game level</h2>
-            <ul class="welcome-info__list">
-               <li class="welcome-info__item active-level">Easy</li>
-               <li class="welcome-info__item">Meddium</li>
+            <ul class="welcome-info__list" id="choose__level">
+               <li class="welcome-info__item active">Easy</li>
+               <li class="welcome-info__item">Medium</li>
                <li class="welcome-info__item">Hard</li>
             </ul>
-            <button>start</button>
+            <button id="start-game">start</button>
          </div>
       </div>
    </section>
 
    <!-- Основной экран игры -->
-   <main class="main">
+   <main class="main" id="main-screen">
       <section class="field" id="gamePole">
 
          <div class="field-content">
@@ -200,6 +200,7 @@
       </section>
    </main>
 
+   <script src="js/first_screen.js"></script>
    <script src="js/script.js"></script>
 </body>
 
