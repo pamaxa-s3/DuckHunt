@@ -14,17 +14,8 @@ btnStart.addEventListener('click', () => {
    dogAnimation();
    // Активируем функию рандома
    birdRandom();
-
-
-   // if (countDuckFly < 10) {
-   // Активируем функию рандома
-   // birdRandom();
-   // countDuckFly++;
-
-   // if (countDuckFly === 10) {
-   //    return
-   // }
-   // }
+   // Создаём жизни
+   createLifes()
 })
 
 
@@ -41,6 +32,9 @@ let chooseItems = chooseLevel.getElementsByClassName("welcome-info__item");
 // Коэфициент скорости птицы, зависит от уровня сложности
 let kV = 20;
 
+// Количество жизней
+let lifesCount = 5;
+
 for (let i = 0; i < chooseItems.length; i++) {
    chooseItems[i].addEventListener("click", function () {
       let current = document.getElementsByClassName("active");
@@ -49,10 +43,13 @@ for (let i = 0; i < chooseItems.length; i++) {
 
       if (this.innerText === 'Easy') {
          kV = 20;
+         lifesCount = 5;
       } else if (this.innerText === 'Medium') {
-         kV = 10;
+         kV = 15;
+         lifesCount = 4;
       } else if (this.innerText === 'Hard') {
-         kV = 5;
+         kV = 10;
+         lifesCount = 3;
       }
    })
 }
@@ -68,8 +65,7 @@ for (let i = 0; i < chooseItems.length; i++) {
 
 // Создание уточек
 
-let birdsCount = 10;
-let currentBird = 1;
+const birdsCount = 10;
 const birdBlock = document.querySelector('#bird-block');
 
 for (let i = 0; i < birdsCount; i++) {
@@ -97,9 +93,28 @@ for (let i = 0; i < birdsCount; i++) {
 // присваиваем класс "active"
 const hitSvgList = document.querySelectorAll('.hit-svg');
 
-for (let i = 0; i < hitSvgList.length; i++) {
-   hitSvgList[i].classList.add('active')
+function hitActive() {
+   for (let i = 0; i < hitSvgList.length; i++) {
+      if (i === countDuckFly) {
+         hitSvgList[i].classList.add('active')
+      }
+   }
 }
 
-// запускаем очередь птиц
-console.log(countDuckFly);
+
+
+// Создаём жизни
+
+function createLifes() {
+   const lifeBlock = document.querySelector('#life-block');
+
+   for (let i = 0; i < lifesCount; i++) {
+      const span = document.createElement('span');
+      const img = document.createElement('img');
+      img.classList.add('bullet-life');
+      img.src = '../img/bullet.svg';
+
+      span.appendChild(img);
+      lifeBlock.appendChild(span);
+   }
+}

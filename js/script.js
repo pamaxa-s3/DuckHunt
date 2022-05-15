@@ -85,6 +85,8 @@ function randomAppearanceBelow(min, max) {
 // Рандомное появление птицы
 function birdRandom() {
 
+	hitActive();
+
 	// Создаём птицу
 	const bird = document.createElement("div");
 	bird.classList.add('bird');
@@ -110,7 +112,6 @@ function birdRandom() {
 			// Удаляем птицу
 			// bird.remove();
 			birdRemove();
-			countDuckFly++;
 		}
 		// Интервал в 10 милисикунд
 	}, kV);
@@ -173,7 +174,6 @@ function birdRandom() {
 				// Удаляем птицу
 				// bird.remove();
 				birdRemove();
-				countDuckFly++;
 			}
 			// Через 10 милисикунд
 		}, 10);
@@ -281,22 +281,23 @@ function birdRandom() {
 		// Отменяем работу таймера
 		clearInterval(timer2);
 	}, 2000);
+
 }
 
 function birdRemove() {
 	// Удаляем птицу
 	const bird = document.querySelector(".bird");
 	bird.remove();
-	countDuckFly++;
-	console.dir(bird);
-	// Выбераем птицу по селектору
 
-	setTimeout(() => {
-		console.dir(bird);
+	countDuckFly++;
+
+	const orederBird = setTimeout(() => {
 		// Активируем функию рандома
 		birdRandom();
+
 	}, 1000)
 
+	if (countDuckFly === 10) {
+		clearTimeout(orederBird);
+	}
 }
-// Активируем функию рандома
-// birdRandom();
