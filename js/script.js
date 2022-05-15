@@ -1,10 +1,11 @@
 var gamePole = document.querySelector('#gamePole');
 // Выбераем собаку по селектору
 var dog = document.querySelector('#dog');
-// Выбераем птицу по селектору
-var bird = document.querySelector(".bird");
+
 // В переменной дистанция храниться значение 50
 var distance = 50;
+// Количество вылетов утки
+var countDuckFly = 0;
 // Функция анимации собаки
 function dogAnimation() {
 	// Ходьба собаки
@@ -83,6 +84,13 @@ function randomAppearanceBelow(min, max) {
 
 // Рандомное появление птицы
 function birdRandom() {
+
+	// Создаём птицу
+	const bird = document.createElement("div");
+	bird.classList.add('bird');
+	gamePole.appendChild(bird);
+
+
 	// Рандомное появление птицы от 50 да 1150 пикселя в ширену
 	var random = randomAppearanceBelow(50, 1150);
 	// Отображаем птицу
@@ -91,8 +99,6 @@ function birdRandom() {
 	// Птица появлеться на высоте в 400 пикселей
 	var dx = 400;
 
-	// Коэфициент скорости птицы, зависит от уровня сложности
-	// let kV = 20;
 	// Птица взлетает вверх
 	var birdTop = setInterval(function () {
 		// От значениея dx отнимаеться по 1 пикселю каждые 10 милисикунд
@@ -102,7 +108,9 @@ function birdRandom() {
 		// Если птица достигла высоты в 100 пикселей тогда удалем птицу
 		if (dx == 10) {
 			// Удаляем птицу
-			bird.remove();
+			// bird.remove();
+			birdRemove();
+			countDuckFly++;
 		}
 		// Интервал в 10 милисикунд
 	}, kV);
@@ -163,7 +171,9 @@ function birdRandom() {
 			// Если птица достигда высоты в 350 пикселей тогда удаляем ее
 			if (bird.offsetTop == 350) {
 				// Удаляем птицу
-				bird.remove();
+				// bird.remove();
+				birdRemove();
+				countDuckFly++;
 			}
 			// Через 10 милисикунд
 		}, 10);
@@ -271,7 +281,21 @@ function birdRandom() {
 		// Отменяем работу таймера
 		clearInterval(timer2);
 	}, 2000);
+}
 
+function birdRemove() {
+	// Удаляем птицу
+	const bird = document.querySelector(".bird");
+	bird.remove();
+	countDuckFly++;
+	console.dir(bird);
+	// Выбераем птицу по селектору
+
+	setTimeout(() => {
+		console.dir(bird);
+		// Активируем функию рандома
+		birdRandom();
+	}, 1000)
 
 }
 // Активируем функию рандома
