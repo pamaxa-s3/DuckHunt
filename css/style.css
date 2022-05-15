@@ -196,7 +196,10 @@ li.active {
 
 .hit__text {}
 
-.hit__count {}
+.hit__count {
+   display: flex;
+   gap: 10px;
+}
 
 .hit-svg {
    width: 15px;
@@ -204,15 +207,15 @@ li.active {
    fill: #808080;
 }
 
-.hit-active {
+span .active {
    fill: #045211;
 }
 
-.hit-miss {
+span .miss {
    fill: #db0b0b;
 }
 
-.hit-done {
+span .done {
    fill: #161885;
 }
 
