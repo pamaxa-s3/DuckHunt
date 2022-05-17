@@ -2,6 +2,9 @@ var gamePole = document.querySelector('#gamePole');
 // Выбераем собаку по селектору
 var dog = document.querySelector('#dog');
 
+// Блок с очками
+const scoreBlock = document.querySelector('#score-block .score__count');
+
 // В переменной дистанция храниться значение 50
 var distance = 50;
 // Количество вылетов утки
@@ -112,8 +115,8 @@ function birdRandom() {
 			// bird.remove();
 			birdRemove();
 			const span = document.querySelector('#span');
-			const lifeBlock = document.querySelector('#life-block');
-      lifeBlock.innerHTML = "";
+			// const lifeBlock = document.querySelector('#life-block');
+			lifeBlock.innerHTML = "";
 			createLifes();
 		}
 		// Интервал в 10 милисикунд
@@ -122,28 +125,37 @@ function birdRandom() {
 	var clickСount = 0;
 	// Клик по птице левой кнопкой мыши
 	bird.onclick = function () {
-		// В старую переменную clickСount записываем новое значение
-		clickСount = clickСount + 1;
-		// Анимация падения птицы
-		function birdFall1() {
-			bird.style.background = "url(img/bird/bird-8.png) no-repeat";
-		}
 
-		function birdFall2() {
-			bird.style.background = "url(img/bird/bird-9.png) no-repeat";
+		if (lifeBlock.children.length > 0) {
+			scoreBlock.innerText = +scoreBlock.innerText + 100;
+			endGameScore.innerHTML = scoreBlock.innerText;
+
+			// В старую переменную clickСount записываем новое значение
+			clickСount = clickСount + 1;
+			// Анимация падения птицы
+			function birdFall1() {
+				bird.style.background = "url(img/bird/bird-8.png) no-repeat";
+			}
+
+			function birdFall2() {
+				bird.style.background = "url(img/bird/bird-9.png) no-repeat";
+			}
+			// Функция сработает через 50 милисикунд
+			setTimeout(birdFall1, 50);
+			// Цыкл если i больше 2 тогда вызываем функцию
+			let i = 0;
+
+			while (i < 2) { // выводит 0, затем 1, затем 2
+				i++;
+
+				// Вызываем функцию
+				birdDown();
+			}
+			// Функция сработает через 200 милисикунд
+			setTimeout(birdFall2, 200);
 		}
-		// Функция сработает через 50 милисикунд
-		setTimeout(birdFall1, 50);
-		// Цыкл если i больше 2 тогда вызываем функцию
-		let i = 0;
-		while (i < 2) { // выводит 0, затем 1, затем 2
-			i++;
-			// Вызываем функцию
-			birdDown();
-		}
-		// Функция сработает через 200 милисикунд
-		setTimeout(birdFall2, 200);
 	}
+
 	// Функция падения птицы
 	function birdDown() {
 		// В переменной timerTop храниться функция setInterval
@@ -177,9 +189,9 @@ function birdRandom() {
 				// bird.remove();
 				birdRemove();
 				const span = document.querySelector('#span');
-			const lifeBlock = document.querySelector('#life-block');
-      lifeBlock.innerHTML = "";
-			createLifes();
+				// const lifeBlock = document.querySelector('#life-block');
+				lifeBlock.innerHTML = "";
+				createLifes();
 			}
 			// Через 10 милисикунд
 		}, 10);
@@ -301,28 +313,35 @@ function birdRemove() {
 
 	}, 1000)
 
-	if (countDuckFly === 10) {
+	if (countDuckFly === birdsCount) {
 		clearTimeout(orederBird);
+		mainScreen.style.display = 'none';
+		endBlock.style.display = 'block';
 	}
 }
 var pole = document.querySelector('.field-content');
 var pole2 = document.querySelector('.field-footer');
 // При клике на поле каждый раз -1 патрон
 pole.onclick = function () {
-	// Выбераем патрон по селектору
-	const span = document.querySelector('#span');
-	// Запускаем цыкл
-			for (let i = 0; i < 1; i++) {
-				// Удаляем пулю
-				span.remove();
+	if (lifeBlock.children.length > 0) {
+		// Выбераем патрон по селектору
+		const span = document.querySelector('#span');
+		// Запускаем цыкл
+		for (let i = 0; i < 1; i++) {
+			// Удаляем пулю
+			span.remove();
+		}
 	}
+
 }
 pole2.onclick = function () {
 	// Выбераем патрон по селектору
 	const span = document.querySelector('#span');
 	// Запускаем цыкл
-			for (let i = 0; i < 1; i++) {
-				// Удаляем пулю
-				span.remove();
+	for (let i = 0; i < 1; i++) {
+		// Удаляем пулю
+		if (span) {
+			span.remove();
+		}
 	}
 }
