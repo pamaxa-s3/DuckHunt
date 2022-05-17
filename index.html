@@ -28,9 +28,45 @@
       </div>
    </section>
 
+
+
+   <section class="end-game-screen" id="end-game-screen">
+      <div class="end-game-screen__body">
+         <h1 class="end-game-screen__title">Game over</h1>
+         <div class="end-game__info">
+            <h2 class="end-game__title">your progress</h2>
+            <ul class="end-game__list" id="_">
+               <li class="end-game__item">
+                  <div>level/ hard</div> <!-- УБРАТЬ ЗНАЧЕНИЕ ВНУТРИ И ВСТАВЛЯТЬ ПОТОМ В js -->
+               </li>
+               <li class="end-game__item">
+                  <div>score/ 3212321</div> <!-- УБРАТЬ ЗНАЧЕНИЕ ВНУТРИ И ВСТАВЛЯТЬ ПОТОМ В js -->
+               </li>
+               <li class="end-game__item">
+                  <div>hit/ 10</div> <!-- УБРАТЬ ЗНАЧЕНИЕ ВНУТРИ И ВСТАВЛЯТЬ ПОТОМ В js -->
+               </li>
+            </ul>
+            <div class="end-game-btn">
+               <button class="end-game-btn" id="restart-game">start</button>
+               <button class="end-game-btn" id="main-menu">menu</button>
+            </div>
+         </div>
+      </div>
+   </section>
+
+
+
    <!-- Основной экран игры -->
    <main class="main" id="main-screen">
       <section class="field" id="gamePole">
+
+         <!-- Экран стартового таймера. ??? = Временно, для отображения. Далее создание через JS -->
+         <div class="start-timer__body">
+            <div class="start-timer__title">
+               <h2 class="start-timer__text">3</h2>
+            </div>
+         </div>
+         <!-- до этого места -->
 
          <div class="field-content">
             <div id="dog"></div>
@@ -69,8 +105,8 @@
       </section>
    </main>
 
-   <script src="js/script.js"></script>
    <script src="js/first_screen.js"></script>
+   <script src="js/script.js"></script>
 </body>
 
 </html>
