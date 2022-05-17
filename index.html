@@ -37,19 +37,18 @@
             <h2 class="end-game__title">your progress</h2>
             <ul class="end-game__list" id="_">
                <li class="end-game__item">
-                  <div>level/ hard</div> <!-- УБРАТЬ ЗНАЧЕНИЕ ВНУТРИ И ВСТАВЛЯТЬ ПОТОМ В js -->
+                  <div>level/ <span id="end-game__level"></span></div>
+                  <!-- УБРАТЬ ЗНАЧЕНИЕ ВНУТРИ И ВСТАВЛЯТЬ ПОТОМ В js -->
                </li>
                <li class="end-game__item">
-                  <div>score/ 3212321</div> <!-- УБРАТЬ ЗНАЧЕНИЕ ВНУТРИ И ВСТАВЛЯТЬ ПОТОМ В js -->
-               </li>
-               <li class="end-game__item">
-                  <div>hit/ 10</div> <!-- УБРАТЬ ЗНАЧЕНИЕ ВНУТРИ И ВСТАВЛЯТЬ ПОТОМ В js -->
+                  <div>score/ <span id="end-game__score">0</span></div>
+                  <!-- УБРАТЬ ЗНАЧЕНИЕ ВНУТРИ И ВСТАВЛЯТЬ ПОТОМ В js -->
                </li>
             </ul>
-            <div class="end-game-btn">
-               <button class="end-game-btn" id="restart-game">start</button>
+            <!-- <div class="end-game-btn">
+               <button class="end-game-btn" id="restart-game">Play again</button>
                <button class="end-game-btn" id="main-menu">menu</button>
-            </div>
+            </div> -->
          </div>
       </div>
    </section>
@@ -74,10 +73,7 @@
          </div>
 
          <footer class="field-footer footer">
-            <div class="footer__round">
-               <!-- Временно, для отображения. Далее создание через JS -->
-               R = <span id="round-level">01</span>
-            </div>
+
             <div class="footer__container">
 
                <div class="footer__lifes lifes wrapper__block">
@@ -91,11 +87,11 @@
                   <div class="hit__count" id="bird-block"></div>
                </div>
 
-               <div class="footer__score score wrapper__block">
+               <div class="footer__score score wrapper__block" id="score-block">
                   <div class="score__text">SCORE</div>
                   <div class="score__count">
                      <!-- Временно, для отображения. Далее создание через JS -->
-                     999999
+                     0
                   </div>
                </div>
             </div>

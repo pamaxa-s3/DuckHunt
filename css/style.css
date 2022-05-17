@@ -134,6 +134,9 @@ li.active {
    width: 100%;
    position: relative;
    display: none;
+
+   cursor: url('../img/aim.png'), crosshair;
+
 }
 
 .main::before {

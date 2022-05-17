@@ -1,3 +1,8 @@
+// Блок END
+const endBlock = document.querySelector('#end-game-screen');
+const endGameLevel = document.querySelector('#end-game__level');
+const endGameScore = document.querySelector('#end-game__score');
+
 // * ===============================================
 // * ======== Клик по кнопке старт игры ============
 // * ===============================================
@@ -61,6 +66,8 @@ let kV = 20;
 // Количество жизней
 let lifesCount = 5;
 
+endGameLevel.innerHTML = 'Easy';
+
 for (let i = 0; i < chooseItems.length; i++) {
    chooseItems[i].addEventListener("click", function () {
       let current = document.getElementsByClassName("active");
@@ -70,17 +77,19 @@ for (let i = 0; i < chooseItems.length; i++) {
       if (this.innerText === 'Easy') {
          kV = 20;
          lifesCount = 5;
+         endGameLevel.innerHTML = 'Easy';
       } else if (this.innerText === 'Medium') {
-         kV = 15;
-         lifesCount = 4;
-      } else if (this.innerText === 'Hard') {
          kV = 10;
+         lifesCount = 4;
+         endGameLevel.innerHTML = 'Medium';
+      } else if (this.innerText === 'Hard') {
+         kV = 5;
          lifesCount = 3;
+         endGameLevel.innerHTML = 'Hard';
       }
    })
+
 }
-
-
 
 
 
@@ -91,7 +100,7 @@ for (let i = 0; i < chooseItems.length; i++) {
 
 // Создание уточек
 
-const birdsCount = 10;
+let birdsCount = 10;
 const birdBlock = document.querySelector('#bird-block');
 
 for (let i = 0; i < birdsCount; i++) {
@@ -128,17 +137,15 @@ function hitActive() {
 }
 
 
-
 // Создаём жизни
+const lifeBlock = document.querySelector('#life-block');
 
 function createLifes() {
-   const lifeBlock = document.querySelector('#life-block');
 
    for (let i = 0; i < lifesCount; i++) {
       const span = document.createElement('span');
       span.id = "span";
       lifeBlock.appendChild(span);
-
 
    }
 }
