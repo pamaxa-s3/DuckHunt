@@ -10,14 +10,40 @@ btnStart.addEventListener('click', () => {
    firstScreen.style.display = 'none';
    mainScreen.style.display = 'block';
    gameStarted = true;
+   // Выполняем функию запуска и отображения стартового таймера
+   startTimer();
    // Выполняем функию анимации собаки
    dogAnimation();
+})
+
+// функция показывает блок с таймером, отсчитывает от 3 до 1 и "Старт"
+function startTimer() {
+   let startTimer = setInterval(function () {
+      let timerText = document.querySelector(".start-timer__text");
+      timerText.innerText = timerText.innerText - 1;
+      if (timerText.innerText == 0) {
+         clearInterval(startTimer);
+         timerText.innerText = "Start";
+         let playStart = setInterval(function () {
+            clearInterval(playStart);
+            closeTimer();
+         }, 1000);
+      }
+   }, 1000)
+}
+
+// функция скрывает блок с таймером
+function closeTimer() {
+   let timerBody = document.querySelector(".start-timer__body");
+   timerBody.style.display = "none";
+
+   // ВОТ С ЭТОГО МОМЕНТА ИДЁТ СТАРТ ИГРЫ.
+
    // Активируем функию рандома
    birdRandom();
    // Создаём жизни
-   createLifes()
-})
-
+   createLifes();
+}
 
 // * ===============================================
 // * ============= Выбор уровня сложности =================
@@ -110,11 +136,9 @@ function createLifes() {
 
    for (let i = 0; i < lifesCount; i++) {
       const span = document.createElement('span');
-      const img = document.createElement('img');
-      img.classList.add('bullet-life');
-      img.src = '../img/bullet.svg';
-
-      span.appendChild(img);
+      span.id = "span";
       lifeBlock.appendChild(span);
+
+
    }
 }

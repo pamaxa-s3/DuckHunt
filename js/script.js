@@ -54,7 +54,7 @@ function dogAnimation() {
 	setTimeout(dog7, 3500);
 	setTimeout(dog8, 3700);
 
-	// Функция ходьбы собаки 
+	// Функция ходьбы собаки
 	var animation = setInterval(function () {
 		// Значение дистанция увеличиваеться на 2px
 		distance = distance + 2;
@@ -92,7 +92,6 @@ function birdRandom() {
 	bird.classList.add('bird');
 	gamePole.appendChild(bird);
 
-
 	// Рандомное появление птицы от 50 да 1150 пикселя в ширену
 	var random = randomAppearanceBelow(50, 1150);
 	// Отображаем птицу
@@ -112,10 +111,13 @@ function birdRandom() {
 			// Удаляем птицу
 			// bird.remove();
 			birdRemove();
+			const span = document.querySelector('#span');
+			const lifeBlock = document.querySelector('#life-block');
+      lifeBlock.innerHTML = "";
+			createLifes();
 		}
 		// Интервал в 10 милисикунд
 	}, kV);
-
 	// В переменной clickСount храниться поумолчанию значение 0, подсчет кликов
 	var clickСount = 0;
 	// Клик по птице левой кнопкой мыши
@@ -132,7 +134,7 @@ function birdRandom() {
 		}
 		// Функция сработает через 50 милисикунд
 		setTimeout(birdFall1, 50);
-		// Цыкл если i больше 2 тогда вызываем функцию 
+		// Цыкл если i больше 2 тогда вызываем функцию
 		let i = 0;
 		while (i < 2) { // выводит 0, затем 1, затем 2
 			i++;
@@ -174,6 +176,10 @@ function birdRandom() {
 				// Удаляем птицу
 				// bird.remove();
 				birdRemove();
+				const span = document.querySelector('#span');
+			const lifeBlock = document.querySelector('#life-block');
+      lifeBlock.innerHTML = "";
+			createLifes();
 			}
 			// Через 10 милисикунд
 		}, 10);
@@ -181,11 +187,9 @@ function birdRandom() {
 		setTimeout(function () {
 			// Отменяем работу таймеру
 			clearInterval(timerTop);
-			// Через 1 секунду 
+			// Через 1 секунду
 		}, 1000);
 	}
-
-
 
 	setTimeout(function () {
 		function random(max) {
@@ -299,5 +303,26 @@ function birdRemove() {
 
 	if (countDuckFly === 10) {
 		clearTimeout(orederBird);
+	}
+}
+var pole = document.querySelector('.field-content');
+var pole2 = document.querySelector('.field-footer');
+// При клике на поле каждый раз -1 патрон
+pole.onclick = function () {
+	// Выбераем патрон по селектору
+	const span = document.querySelector('#span');
+	// Запускаем цыкл
+			for (let i = 0; i < 1; i++) {
+				// Удаляем пулю
+				span.remove();
+	}
+}
+pole2.onclick = function () {
+	// Выбераем патрон по селектору
+	const span = document.querySelector('#span');
+	// Запускаем цыкл
+			for (let i = 0; i < 1; i++) {
+				// Удаляем пулю
+				span.remove();
 	}
 }
