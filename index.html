@@ -5,6 +5,7 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="icon" type="image/x-icon" href="./img/favicon.jpg">
    <link rel="stylesheet" href="css/null.css">
    <link rel="stylesheet" href="css/style.css">
    <title>DuckHunt</title>
@@ -12,184 +13,85 @@
 
 <body>
 
-   <section class="welcome-screen">
+   <section class="welcome-screen" id="first-screen">
       <div class="welcome-screen__body">
          <h1 class="welcome-screen__title stroke-text">Duck Hunt</h1>
          <div class="welcome-screen__info welcome-info">
             <h2 class="welcome-info__title">choose game level</h2>
-            <ul class="welcome-info__list">
-               <li class="welcome-info__item active-level">Easy</li>
-               <li class="welcome-info__item">Meddium</li>
+            <ul class="welcome-info__list" id="choose__level">
+               <li class="welcome-info__item active">Easy</li>
+               <li class="welcome-info__item">Medium</li>
                <li class="welcome-info__item">Hard</li>
             </ul>
-            <button>start</button>
+            <button id="start-game">start</button>
          </div>
       </div>
    </section>
 
+
+
+   <section class="end-game-screen" id="end-game-screen">
+      <div class="end-game-screen__body">
+         <h1 class="end-game-screen__title">Game over</h1>
+         <div class="end-game__info">
+            <h2 class="end-game__title">your progress</h2>
+            <ul class="end-game__list" id="_">
+               <li class="end-game__item">
+                  <div>level/ <span id="end-game__level"></span></div>
+                  <!-- УБРАТЬ ЗНАЧЕНИЕ ВНУТРИ И ВСТАВЛЯТЬ ПОТОМ В js -->
+               </li>
+               <li class="end-game__item">
+                  <div>score/ <span id="end-game__score">0</span></div>
+                  <!-- УБРАТЬ ЗНАЧЕНИЕ ВНУТРИ И ВСТАВЛЯТЬ ПОТОМ В js -->
+               </li>
+            </ul>
+            <!-- <div class="end-game-btn">
+               <button class="end-game-btn" id="restart-game">Play again</button>
+               <button class="end-game-btn" id="main-menu">menu</button>
+            </div> -->
+         </div>
+      </div>
+   </section>
+
+
+
    <!-- Основной экран игры -->
-   <main class="main">
-      <section class="field">
+   <main class="main" id="main-screen">
+      <section class="field" id="gamePole">
+
+         <!-- Экран стартового таймера. ??? = Временно, для отображения. Далее создание через JS -->
+         <div class="start-timer__body">
+            <div class="start-timer__title">
+               <h2 class="start-timer__text">3</h2>
+            </div>
+         </div>
+         <!-- до этого места -->
 
          <div class="field-content">
-
+            <div id="dog"></div>
+            <!-- <div class="bird"></div> -->
          </div>
 
          <footer class="field-footer footer">
-            <div class="footer__round">
-               <!-- Временно, для отображения. Далее создание через JS -->
-               R = <span id="round-level">01</span>
-            </div>
+
             <div class="footer__container">
 
                <div class="footer__lifes lifes wrapper__block">
                   <div class="lifes__text">lifes</div>
-                  <div class="lifes__count">
-                     <!-- Временно, для отображения. Далее создание через JS -->
-                     <span>
-                        <img class="bullet-life" src="./images/bullet.svg" alt="">
-                     </span>
-                     <span>
-                        <img class="bullet-life" src="./images/bullet.svg" alt="">
-                     </span>
-                     <span>
-                        <img class="bullet-life" src="./images/bullet.svg" alt="">
-                     </span>
+                  <div class="lifes__count" id="life-block">
                   </div>
                </div>
 
                <div class="footer__hit hit wrapper__block">
                   <div class="hit__text">HIT</div>
-                  <div class="hit__count">
-                     <!-- Временно, для отображения. Далее создание через JS -->
-                     <span>
-                        <svg class="hit-svg hit-miss" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 216.561 216.561"
-                           xml:space="preserve">
-                           <path d="M210.686,65.28v-30h-18.201C186.15,14.867,167.089,0,144.62,0c-27.628,0-50.105,22.477-50.105,50.104
-                       c0,18.048,9.595,33.894,23.949,42.716c-4.759,0.923-9.668,1.408-14.673,1.408c-24.799,0-47.321-11.719-60.247-31.349l-4.691-7.123
-                       l-6.071,5.989C15.43,78.864,5.874,101.277,5.874,124.858c0,50.564,43.926,91.702,97.917,91.702
-                       c53.992,0,97.918-41.138,97.918-91.702c0-17.227-5.121-33.82-14.634-48.191c2.215-3.527,4.006-7.344,5.294-11.387H210.686z
-                        M152.02,46.947c-5.339,0-9.667-4.328-9.667-9.667s4.328-9.667,9.667-9.667c5.339,0,9.667,4.328,9.667,9.667
-                       S157.359,46.947,152.02,46.947z" />
-                        </svg>
-                     </span>
-                     <span>
-                        <svg class="hit-svg hit-done" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 216.561 216.561"
-                           xml:space="preserve">
-                           <path d="M210.686,65.28v-30h-18.201C186.15,14.867,167.089,0,144.62,0c-27.628,0-50.105,22.477-50.105,50.104
-                       c0,18.048,9.595,33.894,23.949,42.716c-4.759,0.923-9.668,1.408-14.673,1.408c-24.799,0-47.321-11.719-60.247-31.349l-4.691-7.123
-                       l-6.071,5.989C15.43,78.864,5.874,101.277,5.874,124.858c0,50.564,43.926,91.702,97.917,91.702
-                       c53.992,0,97.918-41.138,97.918-91.702c0-17.227-5.121-33.82-14.634-48.191c2.215-3.527,4.006-7.344,5.294-11.387H210.686z
-                        M152.02,46.947c-5.339,0-9.667-4.328-9.667-9.667s4.328-9.667,9.667-9.667c5.339,0,9.667,4.328,9.667,9.667
-                       S157.359,46.947,152.02,46.947z" />
-                        </svg>
-                     </span>
-                     <span>
-                        <svg class="hit-svg hit-active" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 216.561 216.561"
-                           xml:space="preserve">
-                           <path d="M210.686,65.28v-30h-18.201C186.15,14.867,167.089,0,144.62,0c-27.628,0-50.105,22.477-50.105,50.104
-                       c0,18.048,9.595,33.894,23.949,42.716c-4.759,0.923-9.668,1.408-14.673,1.408c-24.799,0-47.321-11.719-60.247-31.349l-4.691-7.123
-                       l-6.071,5.989C15.43,78.864,5.874,101.277,5.874,124.858c0,50.564,43.926,91.702,97.917,91.702
-                       c53.992,0,97.918-41.138,97.918-91.702c0-17.227-5.121-33.82-14.634-48.191c2.215-3.527,4.006-7.344,5.294-11.387H210.686z
-                        M152.02,46.947c-5.339,0-9.667-4.328-9.667-9.667s4.328-9.667,9.667-9.667c5.339,0,9.667,4.328,9.667,9.667
-                       S157.359,46.947,152.02,46.947z" />
-                        </svg>
-                     </span>
-                     <span>
-                        <svg class="hit-svg" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 216.561 216.561"
-                           xml:space="preserve">
-                           <path d="M210.686,65.28v-30h-18.201C186.15,14.867,167.089,0,144.62,0c-27.628,0-50.105,22.477-50.105,50.104
-                       c0,18.048,9.595,33.894,23.949,42.716c-4.759,0.923-9.668,1.408-14.673,1.408c-24.799,0-47.321-11.719-60.247-31.349l-4.691-7.123
-                       l-6.071,5.989C15.43,78.864,5.874,101.277,5.874,124.858c0,50.564,43.926,91.702,97.917,91.702
-                       c53.992,0,97.918-41.138,97.918-91.702c0-17.227-5.121-33.82-14.634-48.191c2.215-3.527,4.006-7.344,5.294-11.387H210.686z
-                        M152.02,46.947c-5.339,0-9.667-4.328-9.667-9.667s4.328-9.667,9.667-9.667c5.339,0,9.667,4.328,9.667,9.667
-                       S157.359,46.947,152.02,46.947z" />
-                        </svg>
-                     </span>
-                     <span>
-                        <svg class="hit-svg" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 216.561 216.561"
-                           xml:space="preserve">
-                           <path d="M210.686,65.28v-30h-18.201C186.15,14.867,167.089,0,144.62,0c-27.628,0-50.105,22.477-50.105,50.104
-                       c0,18.048,9.595,33.894,23.949,42.716c-4.759,0.923-9.668,1.408-14.673,1.408c-24.799,0-47.321-11.719-60.247-31.349l-4.691-7.123
-                       l-6.071,5.989C15.43,78.864,5.874,101.277,5.874,124.858c0,50.564,43.926,91.702,97.917,91.702
-                       c53.992,0,97.918-41.138,97.918-91.702c0-17.227-5.121-33.82-14.634-48.191c2.215-3.527,4.006-7.344,5.294-11.387H210.686z
-                        M152.02,46.947c-5.339,0-9.667-4.328-9.667-9.667s4.328-9.667,9.667-9.667c5.339,0,9.667,4.328,9.667,9.667
-                       S157.359,46.947,152.02,46.947z" />
-                        </svg>
-                     </span>
-                     <span>
-                        <svg class="hit-svg" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 216.561 216.561"
-                           xml:space="preserve">
-                           <path d="M210.686,65.28v-30h-18.201C186.15,14.867,167.089,0,144.62,0c-27.628,0-50.105,22.477-50.105,50.104
-                       c0,18.048,9.595,33.894,23.949,42.716c-4.759,0.923-9.668,1.408-14.673,1.408c-24.799,0-47.321-11.719-60.247-31.349l-4.691-7.123
-                       l-6.071,5.989C15.43,78.864,5.874,101.277,5.874,124.858c0,50.564,43.926,91.702,97.917,91.702
-                       c53.992,0,97.918-41.138,97.918-91.702c0-17.227-5.121-33.82-14.634-48.191c2.215-3.527,4.006-7.344,5.294-11.387H210.686z
-                        M152.02,46.947c-5.339,0-9.667-4.328-9.667-9.667s4.328-9.667,9.667-9.667c5.339,0,9.667,4.328,9.667,9.667
-                       S157.359,46.947,152.02,46.947z" />
-                        </svg>
-                     </span>
-                     <span>
-                        <svg class="hit-svg" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 216.561 216.561"
-                           xml:space="preserve">
-                           <path d="M210.686,65.28v-30h-18.201C186.15,14.867,167.089,0,144.62,0c-27.628,0-50.105,22.477-50.105,50.104
-                       c0,18.048,9.595,33.894,23.949,42.716c-4.759,0.923-9.668,1.408-14.673,1.408c-24.799,0-47.321-11.719-60.247-31.349l-4.691-7.123
-                       l-6.071,5.989C15.43,78.864,5.874,101.277,5.874,124.858c0,50.564,43.926,91.702,97.917,91.702
-                       c53.992,0,97.918-41.138,97.918-91.702c0-17.227-5.121-33.82-14.634-48.191c2.215-3.527,4.006-7.344,5.294-11.387H210.686z
-                        M152.02,46.947c-5.339,0-9.667-4.328-9.667-9.667s4.328-9.667,9.667-9.667c5.339,0,9.667,4.328,9.667,9.667
-                       S157.359,46.947,152.02,46.947z" />
-                        </svg>
-                     </span>
-                     <span>
-                        <svg class="hit-svg" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 216.561 216.561"
-                           xml:space="preserve">
-                           <path d="M210.686,65.28v-30h-18.201C186.15,14.867,167.089,0,144.62,0c-27.628,0-50.105,22.477-50.105,50.104
-                       c0,18.048,9.595,33.894,23.949,42.716c-4.759,0.923-9.668,1.408-14.673,1.408c-24.799,0-47.321-11.719-60.247-31.349l-4.691-7.123
-                       l-6.071,5.989C15.43,78.864,5.874,101.277,5.874,124.858c0,50.564,43.926,91.702,97.917,91.702
-                       c53.992,0,97.918-41.138,97.918-91.702c0-17.227-5.121-33.82-14.634-48.191c2.215-3.527,4.006-7.344,5.294-11.387H210.686z
-                        M152.02,46.947c-5.339,0-9.667-4.328-9.667-9.667s4.328-9.667,9.667-9.667c5.339,0,9.667,4.328,9.667,9.667
-                       S157.359,46.947,152.02,46.947z" />
-                        </svg>
-                     </span>
-                     <span>
-                        <svg class="hit-svg" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 216.561 216.561"
-                           xml:space="preserve">
-                           <path d="M210.686,65.28v-30h-18.201C186.15,14.867,167.089,0,144.62,0c-27.628,0-50.105,22.477-50.105,50.104
-                       c0,18.048,9.595,33.894,23.949,42.716c-4.759,0.923-9.668,1.408-14.673,1.408c-24.799,0-47.321-11.719-60.247-31.349l-4.691-7.123
-                       l-6.071,5.989C15.43,78.864,5.874,101.277,5.874,124.858c0,50.564,43.926,91.702,97.917,91.702
-                       c53.992,0,97.918-41.138,97.918-91.702c0-17.227-5.121-33.82-14.634-48.191c2.215-3.527,4.006-7.344,5.294-11.387H210.686z
-                        M152.02,46.947c-5.339,0-9.667-4.328-9.667-9.667s4.328-9.667,9.667-9.667c5.339,0,9.667,4.328,9.667,9.667
-                       S157.359,46.947,152.02,46.947z" />
-                        </svg>
-                     </span>
-                     <span>
-                        <svg class="hit-svg" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 216.561 216.561"
-                           xml:space="preserve">
-                           <path d="M210.686,65.28v-30h-18.201C186.15,14.867,167.089,0,144.62,0c-27.628,0-50.105,22.477-50.105,50.104
-                       c0,18.048,9.595,33.894,23.949,42.716c-4.759,0.923-9.668,1.408-14.673,1.408c-24.799,0-47.321-11.719-60.247-31.349l-4.691-7.123
-                       l-6.071,5.989C15.43,78.864,5.874,101.277,5.874,124.858c0,50.564,43.926,91.702,97.917,91.702
-                       c53.992,0,97.918-41.138,97.918-91.702c0-17.227-5.121-33.82-14.634-48.191c2.215-3.527,4.006-7.344,5.294-11.387H210.686z
-                        M152.02,46.947c-5.339,0-9.667-4.328-9.667-9.667s4.328-9.667,9.667-9.667c5.339,0,9.667,4.328,9.667,9.667
-                       S157.359,46.947,152.02,46.947z" />
-                        </svg>
-                     </span>
-                  </div>
+                  <div class="hit__count" id="bird-block"></div>
                </div>
 
-               <div class="footer__score score wrapper__block">
+               <div class="footer__score score wrapper__block" id="score-block">
                   <div class="score__text">SCORE</div>
                   <div class="score__count">
                      <!-- Временно, для отображения. Далее создание через JS -->
-                     999999
+                     0
                   </div>
                </div>
             </div>
@@ -199,7 +101,8 @@
       </section>
    </main>
 
-   <script src="js/main.js"></script>
+   <script src="js/first_screen.js"></script>
+   <script src="js/script.js"></script>
 </body>
 
 </html>
